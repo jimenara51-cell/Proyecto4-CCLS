@@ -13,7 +13,7 @@ struct Tarea {
 // Protoripos
 void agregarTarea(vector<Tarea>& tareas);
 void mostrarTareas(const vector<Tarea>& tareas);
-// void completarTarea(vector<Tarea>& tareas);
+void completarTarea(vector<Tarea>& tareas);
 
 int main() {
     vector<Tarea> tareas;
@@ -38,7 +38,7 @@ int main() {
                 mostrarTareas(tareas);
                 break;
             case 3:
-                // completarTarea(tareas);
+                completarTarea(tareas);
                 break;
             case 4:
                 cout << "Saliendo del programa...\n";
@@ -93,10 +93,23 @@ void mostrarTareas(const vector<Tarea>& tareas) {
 }
 
 
-
-
-
 // Marca una tarea como completada
-// void completarTarea(vector<Tarea>& tareas) {
-// 
-// }
+void completarTarea(vector<Tarea>& tareas) {
+    // Imprimir tareas
+    mostrarTareas(tareas);
+    
+    // cambiar tarea. completada a true
+    // numero tarea completada
+    int numeroTarea;
+    cout << "Seleccione la tarea completada";
+    cin >> numeroTarea;
+    
+    if (numeroTarea < 1 or numeroTarea > tareas.size()){
+        cout << "Tarea invalida" << endl; 
+        return;
+    }
+    
+    tareas[numeroTarea - 1].completada = true;
+    cout << "Tarea completada correctamente: " << endl;
+    
+}
