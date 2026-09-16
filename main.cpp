@@ -11,15 +11,15 @@ struct Tarea {
 };
 
 // Protoripos
-// void agregarTarea(vector<Tarea>& tareas);
-// void mostrarTareas(const vector<Tarea>& tareas);
+void agregarTarea(vector<Tarea>& tareas);
+void mostrarTareas(const vector<Tarea>& tareas);
 // void completarTarea(vector<Tarea>& tareas);
 
 int main() {
     vector<Tarea> tareas;
     int opcion;
 
-    while (opcion != 5) {
+    while (opcion != 4) {
         cout << "\nLISTA DE TAREAS\n\n";
         cout << "1. Agregar tarea\n";
         cout << "2. Mostrar tareas\n";
@@ -32,10 +32,10 @@ int main() {
 
         switch (opcion) {
             case 1:
-                // agregarTarea(tareas);
+                agregarTarea(tareas);
                 break;
             case 2:
-                // mostrarTareas(tareas);
+                mostrarTareas(tareas);
                 break;
             case 3:
                 // completarTarea(tareas);
@@ -53,14 +53,48 @@ int main() {
 }
 
 // Agrega una nueva tarea al vector
-// void agregarTarea(vector<Tarea>& tareas) {
-// 
-// }
+void agregarTarea(vector<Tarea>& tareas) {
+    Tarea nueva;
+    // nombre y tipo de variable
+    
+    cout << "Ingrese la informacion de la tarea: ";
+    getline(cin, nueva.descripcion);
+    
+    if (nueva.descripcion == ""){
+        cout << "La tarea no puede estar vacia.";
+        return;
+    }
+    
+    nueva.completada = false;
+    
+    tareas.push_back(nueva);
+    cout << "Nueva tarea aniadida correctamente." << endl;
+}
 
 // Muestra todas las tareas
-// void mostrarTareas(const vector<Tarea>& tareas) {
-// 
-// }
+
+void mostrarTareas(const vector<Tarea>& tareas) {
+    cout << "\nTAREAS\n\n";
+    
+    for (int i=0; i < tareas.size(); i++){
+        // Numero. [Estado] Descripcion 
+        cout << i + 1 << ". ";
+        
+        if (tareas[i].completada == true){
+            cout << "[Completada] ";
+        } else {
+            cout << "[Pendiente] ";
+        }
+        
+        cout << tareas[i].descripcion << endl;
+        
+    }
+
+}
+
+
+
+
 
 // Marca una tarea como completada
 // void completarTarea(vector<Tarea>& tareas) {
