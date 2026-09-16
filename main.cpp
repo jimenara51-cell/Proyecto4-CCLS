@@ -6,6 +6,7 @@ using namespace std;
 
 // Estructura que representa una tarea
 struct Tarea {
+    string prioridad;
     string descripcion;
     bool completada;
 };
@@ -65,6 +66,9 @@ void agregarTarea(vector<Tarea>& tareas) {
         return;
     }
     
+    cout << "Ingrese la prioridad: ";
+    getline(cin, nueva.prioridad);
+    
     nueva.completada = false;
     
     tareas.push_back(nueva);
@@ -77,7 +81,7 @@ void mostrarTareas(const vector<Tarea>& tareas) {
     cout << "\nTAREAS\n\n";
     
     for (int i=0; i < tareas.size(); i++){
-        // Numero. [Estado] Descripcion 
+        // Numero. [Estado] [Prioridad] Descripcion 
         cout << i + 1 << ". ";
         
         if (tareas[i].completada == true){
@@ -85,7 +89,7 @@ void mostrarTareas(const vector<Tarea>& tareas) {
         } else {
             cout << "[Pendiente] ";
         }
-        
+        cout << "[" << tareas[i].prioridad << "] ";
         cout << tareas[i].descripcion << endl;
         
     }
@@ -113,3 +117,4 @@ void completarTarea(vector<Tarea>& tareas) {
     cout << "Tarea completada correctamente: " << endl;
     
 }
+
